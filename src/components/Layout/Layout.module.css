@@ -1,0 +1,22 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    gap: 10px;
+
+}
+
+.headerLink {
+    display: flex;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: black;
+    background-color: transparent;
+    border-radius: 8px;
+
+}
+
+.active {
+    color: white;
+    background-color: black;
+}
