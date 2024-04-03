@@ -28,7 +28,7 @@ export const fetchDetails = async movieId => {
     },
   };
   try {
-    const response = await axios.get.apply(URL, options);
+    const response = await axios.get(URL, options);
     return response.data;
   } catch (error) {
     console.error("Didn't work");
@@ -36,7 +36,7 @@ export const fetchDetails = async movieId => {
   }
 };
 
-export const fetchCredits = async movieId => {
+export const fetchCast = async movieId => {
   const URL = `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`;
   const options = {
     params: {
