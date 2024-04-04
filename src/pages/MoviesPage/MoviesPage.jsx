@@ -5,6 +5,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import Loader from '../../components/Loader';
 import { ErrorMessage } from '../../components/ErrorMessage/ErrorMessage';
+import MovieList from '../../components/MovieList/MovieList';
 
 const MoviePage = () => {
   const [movie, setMovie] = useState([]);
@@ -12,7 +13,7 @@ const MoviePage = () => {
   const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query');
-  const location = useLocation();
+
 
   useEffect(() => {
     const searchData = async query => {
@@ -47,15 +48,7 @@ const MoviePage = () => {
       {loading && <Loader />}
       {error && <ErrorMessage />}
       <ul>
-        {movie.map(movieItem => (
-          <Link
-            key={movieItem.id}
-            to={`${movieItem.id}`}
-            state={{ from: location }}
-          >
-            <li>{movieItem.title}</li>
-          </Link>
-        ))}
+        <MovieList movie={movie}></MovieList>
       </ul>
       <Toaster />
     </div>

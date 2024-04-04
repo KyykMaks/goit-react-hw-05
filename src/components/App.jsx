@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import css from './App.module.css';
+// import css from './App.module.css';
 import { Suspense, lazy } from 'react';
 
 
@@ -9,7 +9,7 @@ const MovieDetailsPage = lazy(() => import ("../pages/MovieDetailsPage/MovieDeta
 const MovieCast = lazy(() => import ("./MovieDetails/MovieCast"));
 const MovieReviews = lazy(() => import ("./MovieDetails/MovieReviews"));
 const NotFound = lazy(() => import ("../pages/HomePage/HomePage"));
-const Layout = lazy(() => import ("./Layout/Layout"));
+const Layout = lazy(() => import ("./Navigation/Navigation"));
 const Loader = lazy(() => import ("./Loader"))
 
 
@@ -24,7 +24,7 @@ function App() {
           <Route path="cast" element={<MovieCast />} />
           <Route path="reviews" element={<MovieReviews />} />
         </Route>
-        <Route path="*" element={<NotFound to="/" />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       </Suspense>
     </Layout>

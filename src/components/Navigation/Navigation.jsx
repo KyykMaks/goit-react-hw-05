@@ -15,7 +15,7 @@ const navClassName = ({ isActive }) =>
           Home
         </NavLink>
         <NavLink className={navClassName} to="/movies">
-        movies
+        Movie
         </NavLink>
       </header>
       <main>

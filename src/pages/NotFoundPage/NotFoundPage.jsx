@@ -4,7 +4,7 @@ import css from './NotFoundPage.module.css';
 const NotFound = () => {
   return (
     <div>
-      This page not found Home page
+      <h1>Opps, sorry</h1>
       <Link className={css.found} to="/">
         Home page
       </Link>

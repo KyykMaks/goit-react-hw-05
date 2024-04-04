@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
-import css from './HomePage.module.css';
-import { useLocation, Link } from 'react-router-dom';
+// import css from './HomePage.module.css';
 import { fetchMovies } from '../../fetchAPI';
+import MovieList from '../../components/MovieList/MovieList';
 
 const HomePage = () => {
-  const [data, setData] = useState([]);
-  const location = useLocation();
+  const [movie, setMovie] = useState([]);
+  
 
   useEffect(() => {
     const getData = async () => {
       try {
         const result = await fetchMovies();
-        setData(result.results);
+        setMovie(result.results);
       } catch (error) {
         console.error(error);
       }
@@ -22,15 +22,7 @@ const HomePage = () => {
   return (
     <div>
       <h1>Trending today</h1>
-      {data.map(item => (
-        <Link
-          key={item.id}
-          to={`/movies/${item.id}`}
-          state={{ from: location }}
-        >
-          <li>{item.title}</li>
-        </Link>
-      ))}
+      <MovieList movie={movie}></MovieList>
     </div>
   );
 };
