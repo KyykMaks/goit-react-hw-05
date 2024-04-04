@@ -7,7 +7,7 @@ const navClassName = ({ isActive }) =>
     [css.active]: isActive,
   });
 
- const Layout = ({ children } ) => {
+ const Navigations= ({ children } ) => {
   return (
     <div>
       <header className={css.header}>
@@ -24,4 +24,4 @@ const navClassName = ({ isActive }) =>
     </div>
   );
 }
-export default Layout;
+export default Navigations;
