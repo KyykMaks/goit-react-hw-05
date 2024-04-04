@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchMovie } from '../../fetchAPI';
 import toast, { Toaster } from 'react-hot-toast';
@@ -15,23 +15,34 @@ const MoviePage = () => {
   const searchQuery = searchParams.get('query');
 
 
-  const formSearch = async searchTerm => {
-    if (searchTerm.trim().length === 0) {
-      toast.error('Please fill in the fields');
-      return ;
-    }
+  useEffect (() => {
+    const pageFetch = async () => {
+    if (searchQuery && searchQuery.trim().length > 0) {
       try {
         setLoading(true);
-        const result = await fetchMovie(searchTerm);
+        const result = await fetchMovie(searchQuery);
         setMovie(result.results);
-        setSearchParams({query: searchTerm})
       } catch (error) {
         setError(true);
       } finally {
         setLoading(false);
-      }
+      } 
+    } else {
+      setMovie([]);
+    }
     };
+    pageFetch();
+    },[searchQuery]);
 
+
+
+    const formSearch = searchTerm => {
+      if (searchTerm.trim().length === 0) {
+        toast.error('Please fill in the fields');
+        return ;
+      }
+      setSearchParams({query:searchTerm})
+    }
   return (
     <div>
       <SearchForm searchQuery={searchQuery} onSetSearchQuery={formSearch} />
